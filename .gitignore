@@ -2,5 +2,5 @@ client/node_modules
 provHoteles/node_modules
 provVehiculos/node_modules
 provVuelos/node_modules
-server/node_modules
+agencia/node_modules
 .git/
