@@ -21,7 +21,8 @@ app.use(cors());                               // se utiliza para conectar siste
 
 // Routes
 // app.use('/api', require('./routes/index'));
-app.use('/api/', require('./routes/agencia.routes'));
+app.use('/api/', require('./routes/usuarios.routes'));
+app.use('/api/proveedores/', require('./routes/agencia.routes'));
 
 //starting the server
 

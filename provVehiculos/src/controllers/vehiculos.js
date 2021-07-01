@@ -5,14 +5,14 @@ const vehiculoMethods = {
     get: async (req, res) => {
         const {location} = req.params;
         const vehiculos = await Vehiculo.find();
-        console.log(vehiculos);
-        res.status(201).json(vehiculos);
+        // console.log(vehiculos);
+        res.status(200).json(vehiculos);
     },
     getByLocation: async (req, res) => {
         const {location} = req.params;
         const vehiculos = await Vehiculo.find({"ubicacion": location});
-        console.log(vehiculos);
-        res.status(201).json(vehiculos);
+        // console.log(vehiculos);
+        res.status(200).json(vehiculos);
     },
     post: async (req, res) => {
         const { nombre, precio, ubicacion, plazas,fechaOcupado } = req.body;
@@ -31,7 +31,7 @@ const vehiculoMethods = {
     updateById: async (req, res) => {
         const {id} = req.params;
         const vehiculoActualizado = await Vehiculo.findByIdAndUpdate(id, req.body, { new: true});
-        console.log(vehiculoActualizado.fechaOcupado);
+        // console.log(vehiculoActualizado.fechaOcupado);
         res.status(201).json(vehiculoActualizado);
     },
     deleteById: async (req, res) => {

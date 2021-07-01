@@ -1,12 +1,12 @@
 const jwt = require('jsonwebtoken');
-const { get } = require('mongoose');
+// const { get } = require('mongoose');
 const config = require('../config');
-const User = require('../models/User');
-const { login } = require('./user');
+const User = require('../models/usuario.models');
+// const { login } = require('./user');
 
 function getUserRol(rol) {
     switch(rol) {
-        case 'uaurio': return 0;
+        case 'usurio': return 0;
         case 'proveedor': return 1;
     }
 
@@ -54,6 +54,16 @@ const utils = {
             if (req.userId == id)  next();
             else return res.status(401).json({message: "401 Unauthorized user"});
         };
+    }, 
+    verifyUrl: (condicion) => {
+        return (req, res, next) => {
+            correcto = false;
+            const {coleccion} = req.params;
+            condicion.forEach(c => {
+                correcto = correcto || (coleccion == c);
+            });
+            (correcto)? next() : res.status(404).json({message: "404 Not found"});
+        }
     }
 
 }

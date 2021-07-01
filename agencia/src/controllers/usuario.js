@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+const User = require('../models/usuario.models');
 const config = require('../config');
 
 
@@ -36,7 +36,10 @@ const userExport = {
         res.status(201).json({token});                                            // Devuelvo un status 201 y el token
     },
     profile: async(req, res) => {
-        const user = await User.findById(req.userId, {password: 0});              // password a 0 para que no se devuelva
+        if(id = req.params.idUsuario) {
+            
+        }
+        const user = await User.findById(id, {password: 0});              // password a 0 para que no se devuelva
 
         if (!user) { // si no existe el usuario  
             return res.status(404).send('No user found');
