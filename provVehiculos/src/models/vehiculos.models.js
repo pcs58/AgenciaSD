@@ -6,7 +6,8 @@ const vehiculoSchema = new Schema ({
     precio: String,
     ubicacion: String,
     plazas: Number,
-    fechaOcupado: [String],
+    fechaEntrada: String,
+    fechaSalida: String,
 }, {
     timestamps: true,
     versionKey: false

@@ -9,22 +9,23 @@ function createToken(userId, secret, time) {
 
 const userExport = {
     login: async (req, res) => {
-        const {email, password} = req.body;
+        const {email, pass} = req.body;
         const user      = await User.findOne({email: email})
         if (!user)      return res.status(404).send("The email doesn't exists");  // Si no existe el usuario
-        const passOk    = await user.validatePass(password);                      // Valida contraseña
+        const passOk    = await user.validatePass(pass);                      // Valida contraseña
+        console.log(passOk);
         if (!passOk)    return res.status(401).json({auth: false, token: null})   // Si la contraseña conincide con la del usuario
         const token     = createToken(user._id, config.secret, 60*60*24)          // Si todo va bien creamos token
         
         res.json({auth: true, token: token});                                     // Devolvemos un JSON con el token
     }, 
     register: async (req, res) => {
-        const {username, email, password, rol} = req.body;  
+        const {username, email, pass, rol} = req.body;  
 
         const user      = new User({
             username,
             email,
-            password,
+            password: pass,
             rol: (!rol)? 'user': rol
         });
         

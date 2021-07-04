@@ -1,0 +1,16 @@
+<div class="h-100 p-5 bg-light border rounded-3">
+    <form (submit)="iniciarSesion()">
+        <h3>Iniciar sesión</h3>
+        <div class="form-floating mt-3">
+            <input type="email" [(ngModel)]="usuario.email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+            <label for="email" class="form-label">Email</label>
+        </div>
+        <div class="form-floating mt-3">
+            <input type="password" [(ngModel)]="usuario.pass" class="form-control" name="pass" id="pass">
+            <label for="pass" class="form-label">Contraseña</label>
+        </div>
+        <div class="d-grid gap-2 mt-4">
+            <button class="btn btn-secondary" type="submit">Iniciar sesión</button>
+        </div>
+    </form>
+</div>

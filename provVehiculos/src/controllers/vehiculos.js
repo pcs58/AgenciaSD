@@ -3,7 +3,6 @@ const Vehiculo = require('../models/vehiculos.models');
 const vehiculoMethods = {
 
     get: async (req, res) => {
-        const {location} = req.params;
         const vehiculos = await Vehiculo.find();
         // console.log(vehiculos);
         res.status(200).json(vehiculos);
@@ -14,15 +13,22 @@ const vehiculoMethods = {
         // console.log(vehiculos);
         res.status(200).json(vehiculos);
     },
+    getByVehiculo: async (req, res) => {
+        const {location, fechaEntrada, fechaSalida, plazas} = req.params;
+        const vehiculos = await Vehiculo.find({"ubicacion": location, "fechaEntrada": fechaEntrada, "fechaSalida": fechaSalida, "plazas": plazas});
+        // console.log(vehiculos);
+        res.status(200).json(vehiculos);
+    },
     post: async (req, res) => {
-        const { nombre, precio, ubicacion, plazas,fechaOcupado } = req.body;
+        const { nombre, precio, ubicacion, plazas,fechaEntrada, fechaSalida } = req.body;
 
         const nuevoVehiculo = new Vehiculo({
             nombre,
             precio, 
             ubicacion,
             plazas,
-            fechaOcupado
+            fechaEntrada,
+            fechaSalida,
         });
 
         const vehiculoGuardado = await nuevoVehiculo.save();

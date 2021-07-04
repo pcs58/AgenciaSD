@@ -1,13 +1,15 @@
 const {Router} = require('express');
 const router   = Router();
 
-var articles   = require('../controllers/article');
+var hotel   = require('../controllers/hotel');
 const utils   = require('../controllers/utils');
 
-router.get    ('/'   , articles.get);  
-router.get    ('/:id', articles.getById);
-router.post   ('/'   , utils.guard('redactor'), articles.create); 
-router.put    ('/:id', utils.guard('redactor'), utils.verifyUserId('Article'), articles.updateById);
-router.delete ('/:id', utils.guard('redactor'), utils.verifyUserId('Article'), articles.deleteById);
+router.get    ('/'   , hotel.get);  
+router.get    ('/:id'   , hotel.getById);  
+router.get    ('/ubicacion/:location', hotel.getByLocation);
+router.get    ('/:id/:fechaInicio/:fechaFin', hotel.ocupado);
+router.post   ('/'   , utils.guard('proveedor'), hotel.post); 
+router.put    ('/:id', utils.guard('proveedor'), hotel.updateById);
+router.delete ('/:id', utils.guard('proveedor'), hotel.deleteById);
 
 module.exports = router;

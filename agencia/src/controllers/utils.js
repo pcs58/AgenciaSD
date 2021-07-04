@@ -64,6 +64,12 @@ const utils = {
             });
             (correcto)? next() : res.status(404).json({message: "404 Not found"});
         }
+    },
+    hola: () => {
+        return (req,res,next) => {
+            console.log("hola");
+            next();
+        }
     }
 
 }

@@ -1,13 +1,20 @@
+const https = require('https');
+const fs = require('fs');
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const cors = require('cors');
 
+
 // database
 require('./database');
 
 // Settings
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3200);
+const settingCert = {
+    key: fs.readFileSync('../../cert/key.pem'),
+    cert: fs.readFileSync('../../cert/cert.pem')
+}
 
 
 
@@ -26,8 +33,8 @@ app.use('/api/vehiculos/', require('./routes/vehiculos.routes'));
 //starting the server
 
 async function init()  {//esto es una prueba del editor nvim
-    await app.listen(app.get('port'), () => {
-        console.log(`Server on port ${app.get('port')} http://localhost:3000`);
+    await https.createServer(settingCert, app).listen(app.get('port'), () => {
+        console.log(`Server on port ${app.get('port')} https://localhost:${app.get('port')}`);
     })
 };
 init();

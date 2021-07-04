@@ -1,0 +1,71 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <form (submit)="buscarVehiculos()">
+        <div class="h-100 p-5 bg-light border rounded-3">
+          <h2>Busca vehículos</h2>
+          <div class="card">
+          </div>
+          <p class="mt-3 mb-1">Selecciona recogida</p>
+          <div class="form-floating">
+            <input class="form-control" [(ngModel)]="vehiculos.ubicacion" name="ubicacion" type="text" placeholder="" id="floatingTextarea">
+            <label for="floatingTextarea">ubicación</label>
+          </div>
+        
+          <p class="mt-3 mb-0">Selecciona fechas</p>
+          <div class="row">
+              <div class="form-floating col-lg-6 mt-sm-2">
+                <input class="form-control" [(ngModel)]="vehiculos.fechaEntrada" name="fechaEntrada" type="date" placeholder="" id="floatingTextarea">
+                <label for="floatingTextarea" style="margin-left: 12px;">Fecha de entrada</label>
+              </div>
+              <div class="form-floating col-lg-6 mt-sm-2">
+                <input class="form-control" [(ngModel)]="vehiculos.fechaSalida" name="fechaSalida" type="date" placeholder="" id="floatingTextarea">    
+                <label for="floatingTextarea" style="margin-left: 12px;">Fecha de salida</label>
+              </div>
+              <p class="mt-4 mb-0">Acomodación</p>
+              <div class="form-floating col-lg-6 mt-2">
+                  <select class="form-select" [(ngModel)]="vehiculos.plazas" name="plazas" aria-label="Default select example" id="floatingtext">
+                      <option value="4">4</option>
+                      <option value="5" selected>5</option>
+                      <option value="6">6</option>
+                  </select>
+                  <label for="floatingtext" style="margin-left: 12px;">Número de plazas</label>
+              </div>
+          </div>
+          <div class="d-grid gap-2 mt-4">
+            <button class="btn btn-secondary" type="submit">Buscar vehículos</button>
+          </div>
+        </div>     
+      </form>
+    </div>
+    <div class=" mt-3" *ngIf="buscado">
+      <h4>Resultados: </h4>
+      <div class="card mb-4">
+      </div>
+      <div class="resultados"  *ngFor="let vehiculo of resultado">
+        <div class="card mb-3" >
+          <div class="row g-0">
+            <div class="col-md-3">
+              <img src="../../assets/vehiculo.png" class="img-fluid rounded-start p-3">
+            </div>
+            <div class="col-md-9">
+              <div class="card-body">
+                <h5 class="card-title">Nombre: {{vehiculo.nombre}}</h5>
+                <p class="card-text">Precio: {{vehiculo.precio}}</p>
+                <p class="card-text">Ubicación: {{vehiculo.ubicacion}}</p>
+                <p class="card-text">Plazas: {{vehiculo.plazas}}</p>
+                <p class="card-text">Fecha de entrada: {{vehiculo.fechaEntrada}}</p>
+                <p class="card-text">Fecha de salida:{{vehiculo.fechaSalida}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+    
+    </div>
+  </div>
+</div> 
+
+

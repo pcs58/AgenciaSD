@@ -1,0 +1,11 @@
+{
+  "name": "cliente",
+  "version": "1.0.0",
+  "description": "Cliente de agencia de viajes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pablo Carrillo Sánchez",
+  "license": "ISC"
+}

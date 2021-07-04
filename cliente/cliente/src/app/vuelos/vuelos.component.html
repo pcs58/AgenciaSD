@@ -1,0 +1,41 @@
+
+  
+  <div class="h-100 p-5 bg-light border rounded-3">
+    <h2>Busca tu vuelo</h2>
+    <div class="card">
+    </div>
+    <p class="mt-3 mb-1">Selecciona un origen</p>
+    <div class="form-floating">
+      <input class="form-control"  type="text" placeholder="" id="origen">
+      <label for="origen">ubicación</label>
+    </div>
+    <p class="mt-3 mb-1">Selecciona un destino</p>
+    <div class="form-floating">
+        <input class="form-control"  type="text" placeholder="" id="destino">
+        <label for="destino">ubicación</label>
+    </div>
+    <div class="form-check form-switch mt-4">
+        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" (click)="clica()">
+        <label class="form-check-label" for="flexSwitchCheckChecked">Ida y vuelta</label>
+    </div>
+    <div class="row mt-4">
+        <p class="mt-3 mb-1">Acomodación</p>
+        <div *ngIf="!clicado" class="form-floating col-lg-12 mt-2">
+          <input class="form-control"  type="date" placeholder="" id="floatingTextarea">
+          <label for="floatingTextarea" style="margin-left: 12px;">Fecha de ida</label>
+        </div>
+
+        <div *ngIf="clicado" class="form-floating col-lg-6 mt-2">
+          <input class="form-control"  type="date" placeholder="" id="floatingTextarea">
+          <label for="floatingTextarea" style="margin-left: 12px;">Fecha de ida</label>
+        </div>
+
+        <div *ngIf="clicado" class="form-floating col-lg-6 mt-2">
+          <input class="form-control"  type="date" placeholder="" id="floatingTextarea">    
+          <label for="floatingTextarea" style="margin-left: 12px;">Fecha de vuelta</label>
+        </div>
+    </div>
+    <div class="d-grid gap-2 mt-4">
+      <button class="btn btn-secondary" type="button">Buscar vuelos</button>
+    </div>
+  </div>
